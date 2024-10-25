@@ -52,6 +52,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
         .pic = true,
     });
+    native_library.bundle_compiler_rt = true;
     native_library.root_module.addImport("build_options", options_module);
     const native_library_install = b.addInstallLibFile(
         native_library.getEmittedBin(),
