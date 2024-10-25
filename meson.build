@@ -13,11 +13,7 @@ zip8_object = custom_target('gen-zig-build',
 
 inc_dir = include_directories('src')
 
-zip8_lib = static_library('zip8', [zip8_object[0]],
-	include_directories: inc_dir
-)
-
 zip8 = declare_dependency(
 	include_directories: inc_dir,
-	link_with: zip8_lib
+	link_with: zip8_object
 )
