@@ -45,7 +45,7 @@ pub fn build(b: *std.Build) void {
     options.addOption(bool, "experimental_render_hooks", experimental_render_hooks);
     const options_module = options.createModule();
 
-    const native_library = b.addSharedLibrary(.{
+    const native_library = b.addStaticLibrary(.{
         .name = "zip8",
         .root_source_file = b.path("src/main.zig"),
         .target = target,
@@ -54,7 +54,7 @@ pub fn build(b: *std.Build) void {
     native_library.root_module.addImport("build_options", options_module);
     const native_library_install = b.addInstallLibFile(
         native_library.getEmittedBin(),
-        b.fmt("libzip8{s}", .{target.result.dynamicLibSuffix()}),
+        b.fmt("libzip8{s}", .{target.result.staticLibSuffix()}),
     );
     b.default_step.dependOn(&native_library_install.step);
 
