@@ -4,7 +4,7 @@ zig = find_program('zig', required: true)
 
 zip8_object = custom_target('gen-zig-build',
 	input: 'build.zig',
-	output: ['lipzip8.a'],
+	output: ['libzip8.a'],
 	build_by_default: true,
 	command: ['./make_lib.sh', '@INPUT@', '@OUTPUT@'],
 	install_dir: get_option('libdir'),
