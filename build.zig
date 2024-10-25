@@ -50,6 +50,7 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
+        .pic = true,
     });
     native_library.root_module.addImport("build_options", options_module);
     const native_library_install = b.addInstallLibFile(
